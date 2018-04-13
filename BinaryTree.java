@@ -2,16 +2,10 @@ import java.util.Iterator;
 import Helpers.EmptyCollectionException;	// Runtime Exception Class
 import Helpers.LinkedQueue;			// Linked Queue Data Structure
 import Helpers.ArrayUnorderedList;		// Unordered ArrayList Data Structure
-
-
 /**
- * Standard linked binary tree structure using links.
+ * Standard linked BinaryTree structure using links.
  * @author Tsuki
- *
- * @param <T>
- *
- *
- *
+ * 
  */
 public class BinaryTree<T>
 {
@@ -30,96 +24,93 @@ public class BinaryTree<T>
 	 */
 	public BinaryTree()
 	{
-		this.root = null;
-		this.numberOfNodes = 0;
+		root = null;
+		numberOfNodes = 0;
 	}
 	
 	
 	/**
 	 * Constructor(2) used to create a new binary tree with the specified element as its root.
-	 * @param element
+	 * @param element Specified element
 	 */
 	public BinaryTree(T element)
 	{
-		this.root = new BinaryTreeNode<T>(element);
-		this.numberOfNodes = 1;
+		root = new BinaryTreeNode<T>(element);
+		numberOfNodes = 1;
 	}
 	
 	
 	/**
 	 * Constructor(3) used to create a new binary tree with the specified element as its root
 	 * and two provided binary subtrees as left and right subtrees of root.
-	 * @param element
-	 * @param leftSubtree
-	 * @param rightSubtree
+	 * @param element Specified element
+	 * @param leftSubtree Specified subtree
+	 * @param rightSubtree Specified subtree
 	 */
 	public BinaryTree(T element, BinaryTree<T> leftSubtree, BinaryTree<T> rightSubtree)
 	{
-		this.root = new BinaryTreeNode<T>(element);
-		this.numberOfNodes = 1 + leftSubtree.size() + rightSubtree.size();
+		root = new BinaryTreeNode<T>(element);
+		numberOfNodes = 1 + leftSubtree.size() + rightSubtree.size();
 		
 		if (!leftSubtree.isEmpty())
-			this.root.setLeft(new BinaryTreeNode<T>(leftSubtree.getRoot()));
+			root.setLeft(new BinaryTreeNode<T>(leftSubtree.getRoot()));
 		
 		if (!rightSubtree.isEmpty())
-			this.root.setRight(new BinaryTreeNode<T>(rightSubtree.getRoot()));
+			root.setRight(new BinaryTreeNode<T>(rightSubtree.getRoot()));
 	}
 	
 	
 	/**
-	 * Returns a reference to the element at the root.
-	 * @return
-	 * @throws
+	 * @return a reference to the element at the root
+	 * @throws EmptyCollectionException if tree is empty
 	 */
 	public T getRoot() throws EmptyCollectionException
 	{
-		if (this.root == null)
+		if (isEmpty())
 			throw new EmptyCollectionException("BinaryTree");
 		
-		return this.root.getElement();
+		return root.getElement();
 	}
 	
 	
 	/**
-	 * Returns the total number of nodes in this tree.
-	 * @return
+	 * @return number of nodes this tree contains
 	 */
 	public int size() 
 	{
-		return this.numberOfNodes;
+		return numberOfNodes;
 	}
 	
 	
 	/**
-	 * Returns whether this tree is empty or not.
-	 * @return
+	 * @return true if this tree is empty; false otherwise
 	 */
 	public boolean isEmpty()
 	{
-		return this.numberOfNodes == 0;
+		return numberOfNodes == 0;
 	}
 	
 	
 	/**
-	 * Returns whether this tree contains a node which contains an element that matches with
+	 * Checks whether this tree contains a node which contains an element that matches with
 	 * the target element or not.
-	 * @param targetElement
-	 * @return
+	 * @param targetElement Target element to be sought
+	 * @return true if targetElement exists in this tree; false otherwise
 	 */
 	public boolean contains(T targetElement)
 	{
-		return findNode(targetElement, this.root);
+		return searchNode(targetElement, root);
 	}
-
+	
 
 	/**
 	 * Helper method for contains().
-	 * Traverses left and right subtrees of current node recursively. 
-	 * @param targetElement
-	 * @param next
-	 * @return
+	 * Performs recursive traversal over left and right subtrees of a node.
+	 * @param targetElement Target element to be sought
+	 * @param node Current node
+	 * @return true if targetElement exists in current node's subtrees; false otherwise
 	 */
-	private boolean findNode(T targetElement, BinaryTreeNode<T> node)
+	protected boolean searchNode(T targetElement, BinaryTreeNode<T> node)
 	{
 		if (node == null)
 			return false;
@@ -128,30 +119,30 @@ public class BinaryTree<T>
 			return true;
 		
 		// Traverse left subtree first
-		if (findNode(targetElement, node.getLeft()))
+		if (searchNode(targetElement, node.getLeft()))
 			return true;
 		// If not found, then traverse right subtree
 		else
-			return findNode(targetElement, node.getRight());
+			return searchNode(targetElement, node.getRight());
 	}
-
+	
 
 	/**
-	 * Returns the height of the tree.
-	 * @return
+	 * @return the height of this tree
 	 */
 	public int height() 
 	{
-		return findHeight(this.root);
+		return findHeight(root);
 	}
 	
 	
 	/**
 	 * Helper method for height().
-	 * Traverses left and right subtress of current node recursively.
-	 * @return
+	 * Performs a recursive traversal over left and right subtress of a node.
+	 * @param node Current node
+	 * @return current node's height
 	 */
-	private int findHeight(BinaryTreeNode<T> node)
+	protected int findHeight(BinaryTreeNode<T> node)
 	{
 		if (node == null)
 			return -1;
@@ -161,13 +152,12 @@ public class BinaryTree<T>
 	
 	
 	/**
-	 * Returns a pre-order iterator over this tree.
-	 * @return
+	 * @return a pre-order iterator over this tree
 	 */
 	public Iterator<T> iteratorPreOrder()
 	{
 		ArrayUnorderedList<T> list = new ArrayUnorderedList<T>(); 
-		preorder(this.root, list);
+		preorder(root, list);
 		
 		return list.iterator();
 	}
@@ -176,10 +166,10 @@ public class BinaryTree<T>
 	/**
 	 * Helper method for iteratorPreOrder().
 	 * Performs a recursive pre-order traversal.
-	 * @param node
-	 * @param list
+	 * @param node Current node
+	 * @param list Temporary list storing nodes in pre-order traversal
 	 */
-	private void preorder(BinaryTreeNode<T> node, ArrayUnorderedList<T> list)
+	protected void preorder(BinaryTreeNode<T> node, ArrayUnorderedList<T> list)
 	{
 		if (node == null)
 			return;
@@ -189,27 +179,26 @@ public class BinaryTree<T>
 		preorder(node.getRight(), list);
 	}
 
-
+	
 	/**
-	 * Returns an in-order iterator over this tree.
-	 * @return
+	 * @return Returns an in-order iterator over this tree.
 	 */
 	public Iterator<T> iteratorInOrder() 
 	{
 		ArrayUnorderedList<T> list = new ArrayUnorderedList<T>();
-		inorder(this.root, list);
+		inorder(root, list);
 		
 		return list.iterator();
 	}
 
-
+	
 	/**
 	 * Helper method for iteratorInOrder()
 	 * Performs a recursive in-order traversal.
-	 * @param node
-	 * @param list
+	 * @param node Current node
+	 * @param list Temporary list storing nodes in in-order traversal
 	 */
-	private void inorder(BinaryTreeNode<T> node, ArrayUnorderedList<T> list)
+	protected void inorder(BinaryTreeNode<T> node, ArrayUnorderedList<T> list)
 	{
 		if (node == null)
 			return;
@@ -218,16 +207,15 @@ public class BinaryTree<T>
 		list.addToRear(node.getElement());
 		inorder(node.getRight(), list);
 	}
-
+	
 
 	/**
-	 * Returns a post-order iterator over this tree.
-	 * @return
+	 * @return a post-order iterator over this tree
 	 */
 	public Iterator<T> iteratorPostOrder() 
 	{
 		ArrayUnorderedList<T> list = new ArrayUnorderedList<T>();
-		postorder(this.root, list);
+		postorder(root, list);
 		
 		return list.iterator();
 	}
@@ -236,10 +224,10 @@ public class BinaryTree<T>
 	/**
 	 * Helper method for iteratorPostOrder().
 	 * Performs a recursive post-order traversal.
-	 * @param node
-	 * @param list
+	 * @param node Current node
+	 * @param list Temporary list storing nodes in post-order traversal
 	 */
-	private void postorder(BinaryTreeNode<T> node, ArrayUnorderedList<T> list)
+	protected void postorder(BinaryTreeNode<T> node, ArrayUnorderedList<T> list)
 	{
 		if (node == null)
 			return;
@@ -248,11 +236,10 @@ public class BinaryTree<T>
 		postorder(node.getRight(), list);
 		list.addToRear(node.getElement());
 	}
-
+	
 
 	/**
-	 * Returns a level-order iterator over this tree.
-	 * @return
+	 * @return a level-order iterator over this tree
 	 */
 	public Iterator<T> iteratorLevelOrder() 
 	{
@@ -261,38 +248,35 @@ public class BinaryTree<T>
 		if (isEmpty())
 		{
 			list.addToFront(null);
-		}
-		else
-		{
-			BinaryTreeNode<T> current = this.root;
-			LinkedQueue<BinaryTreeNode<T>> queue = new LinkedQueue<BinaryTreeNode<T>>();
-			queue.enqueue(current);
-			
-			while (!queue.isEmpty())
-			{
-				current = queue.dequeue();
-				list.addToRear(current.getElement());
-				
-				if (current.getLeft() != null)
-					queue.enqueue(current.getLeft());
-				
-				if (current.getRight() != null)
-					queue.enqueue(current.getRight());
-			}
+			return list.iterator();
 		}
 		
+		BinaryTreeNode<T> current = root;
+		LinkedQueue<BinaryTreeNode<T>> queue = new LinkedQueue<BinaryTreeNode<T>>();
+		queue.enqueue(current);
+			
+		while (!queue.isEmpty())
+		{
+			current = queue.dequeue();
+			list.addToRear(current.getElement());
+				
+			if (current.getLeft() != null)
+				queue.enqueue(current.getLeft());
+				
+			if (current.getRight() != null)
+				queue.enqueue(current.getRight());
+		}
 		return list.iterator();
 	}
 	
 	
 	/**
-	 * Retruns String representation of this tree.
-	 * @return
+	 * @return In-order String representation of this binary tree
 	 */
 	public String toString() 
 	{
 		ArrayUnorderedList<T> list = new ArrayUnorderedList<T>();
-		inorder(this.root, list);
+		inorder(root, list);
 		
 		return list.toString();
 	}
