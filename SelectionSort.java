@@ -59,7 +59,7 @@ import Helpers.LinkedQueue; // LinkedQueue Data Structure
  */
 public class SelectionSort {
 
-  /**
+  	/**
 	 * Two Queue Algorithm for Selection Sort
 	 * @param list Unordered List
 	 * @return Sorted List
@@ -94,7 +94,7 @@ public class SelectionSort {
 		return list;
 	}
   
-  /**
+ 	/**
 	 * In-Place Algorithm for Insertion Sort
 	 * @param A Unordered Array
 	 * @param n Number of items
