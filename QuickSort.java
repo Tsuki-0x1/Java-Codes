@@ -48,7 +48,6 @@ public class QuickSort {
 	 * @return Sorted Array
 	 */
 	public static int[] Sort_Recursively(int[] A, int n) {
-		
 		if (n > 1) {
 			int[] smaller, equal, larger;
 			smaller = new int[n];
@@ -68,9 +67,9 @@ public class QuickSort {
 			quickSort(larger, n_larger);
 			
 			int i = 0;
-			for (int j = 0; j < n_s; j++) A[i++] = smaller[j];
-			for (int j = 0; j < n_e; j++) A[i++] = equal[j];
-			for (int j = 0; j < n_l; j++) A[i++] = larger[j];	
+			for (int j = 0; j < n_smaller; j++) A[i++] = smaller[j];
+			for (int j = 0; j < n_equal; j++) A[i++] = equal[j];
+			for (int j = 0; j < n_larger; j++) A[i++] = larger[j];	
 		}
 		return A;
 	}
