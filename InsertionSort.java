@@ -1,10 +1,10 @@
 import Helpers.ArrayStack;  // ArrayStack Data Structure
 /**
  * 
- * Insertion Sort Algorithm Demonstration in Java
+ * Insertion Sort Algorithms Demonstration in Java
  *
  * ------------------------------------
- * [ Two Stacks Algorithm ]
+ * [ Two Stack Algorithm ]
  *
  * Algorithm InsertionSort(A, n)
  * In: Array A storing n values
