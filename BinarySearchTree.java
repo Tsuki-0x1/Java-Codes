@@ -367,24 +367,24 @@ public class BinarySearchTree<T> extends BinaryTree<T>
 		// 1. Perform iterative traversal in right subtree.
 		BinaryTreeNode<T> parent = node;
 		BinaryTreeNode<T> current = node.getRight();
-        while (current.getLeft() != null)
-        {
-        		parent = current;
-        		current = current.getLeft();
-        }
-        
-        // 2. Replace given node with the smallest node (current) in its right subtree.
-        if (node.getRight().equals(current))
-        		current.setLeft(node.getLeft());
-        else
-        {
-        		parent.setLeft(current.getRight());
-        		current.setLeft(node.getLeft());
-        		current.setRight(node.getRight());
-        }
-        
-        // 3. Return the reference to the replaced node (current).
-        return current;
-	}
+		while (current.getLeft() != null)
+		{
+				parent = current;
+				current = current.getLeft();
+		}
+
+		// 2. Replace given node with the smallest node (current) in its right subtree.
+		if (node.getRight().equals(current))
+				current.setLeft(node.getLeft());
+		else
+		{
+				parent.setLeft(current.getRight());
+				current.setLeft(node.getLeft());
+				current.setRight(node.getRight());
+		}
+
+		// 3. Return the reference to the replaced node (current).
+		return current;
+		}
 	
 }
