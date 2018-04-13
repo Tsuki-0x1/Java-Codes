@@ -42,12 +42,12 @@
 public class QuickSort {
 
   
-	/* Two Stack Algorithm for Insertion Sort
+	/* Recursive Algorithm for Quick Sort
 	 * @param A Unordered Array
 	 * @param n Number of items
 	 * @return Sorted Array
 	 */
-	public static int[] quickSort(int[] A, int n) {
+	public static int[] Sort_Recursively(int[] A, int n) {
 		
 		if (n > 1) {
 			int[] smaller, equal, larger;
