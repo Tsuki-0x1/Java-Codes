@@ -50,7 +50,6 @@ public class QuickSort {
 	public static int[] quickSort(int[] A, int n) {
 		
 		if (n > 1) {
-			
 			int[] smaller, equal, larger;
 			smaller = new int[n];
 			equal = new int[n];
