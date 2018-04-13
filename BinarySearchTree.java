@@ -385,6 +385,6 @@ public class BinarySearchTree<T> extends BinaryTree<T>
 
 		// 3. Return the reference to the replaced node (current).
 		return current;
-		}
+	}
 	
 }
