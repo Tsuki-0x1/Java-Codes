@@ -59,6 +59,9 @@ import Helpers.LinkedQueue; // LinkedQueue Data Structure
  */
 public class SelectionSort {
 
+	// Note: Below is only an implementation of a specific algorithm (above). It is NOT recommended to use the code.
+	//	 This is only uploaded for demonstration purpose for above algorithm; the algorithm itself isn't efficient.
+	
   	/**
 	 * Two Queue Algorithm for Selection Sort
 	 * @param list Unordered List
@@ -93,6 +96,9 @@ public class SelectionSort {
 
 		return list;
 	}
+	
+	// Note: Below is only an implementation of a specific algorithm (above). It is NOT recommended to use the code.
+	//	 This is only uploaded for demonstration purpose for above algorithm; the algorithm itself isn't efficient.
   
  	/**
 	 * In-Place Algorithm for Insertion Sort
