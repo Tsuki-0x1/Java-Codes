@@ -53,7 +53,7 @@ import Helpers.ArrayStack;  // ArrayStack Data Structure
 public class InsertionSort {
 
 	// Note: Below is only an implementation of a specific algorithm (above). It is NOT recommended to use the code.
-	//	 This is only uploaded for demonstration purpose for above algorithm.
+	//	 This is only uploaded for demonstration purpose for above algorithm; the algorithm itself isn't efficient.
 	
   	/**
 	 * Two Stack Algorithm for Insertion Sort
@@ -81,7 +81,7 @@ public class InsertionSort {
 	}
 	
 	// Note: Below is only an implementation of a specific algorithm (above). It is NOT recommended to use the code.
-	//	 This is only uploaded for demonstration purpose for above algorithm.
+	//	 This is only uploaded for demonstration purpose for above algorithm; the algorithm itself isn't efficient.
 	
 	/**
 	 * In-Place Algorithm for Insertion Sort
