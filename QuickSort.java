@@ -42,7 +42,7 @@
 public class QuickSort {
 
 	// Note: Below is only an implementation of a specific algorithm (above). It is NOT recommended to use the code.
-	//	 This is only uploaded for demonstration purpose for above algorithm.
+	//	 This is only uploaded for demonstration purpose for above algorithm; the algorithm itself isn't efficient.
   
 	/* Recursive Algorithm for Quick Sort
 	 * @param A Unordered Array
