@@ -34,15 +34,15 @@
  * ------------------------------------
  * Order of Time Complexity:
  *
- * Best:		O(n log2(n))
- * Worst:	  O(n^2)
+ * Best:	O(n log2(n))
+ * Worst:	O(n^2)
  * Average:	O(n log2(n))
  *
  */
 public class QuickSort {
 
   
-	  /* Two Stack Algorithm for Insertion Sort
+	/* Two Stack Algorithm for Insertion Sort
 	 * @param A Unordered Array
 	 * @param n Number of items
 	 * @return Sorted Array
@@ -71,10 +71,8 @@ public class QuickSort {
 			int i = 0;
 			for (int j = 0; j < n_s; j++) A[i++] = smaller[j];
 			for (int j = 0; j < n_e; j++) A[i++] = equal[j];
-			for (int j = 0; j < n_l; j++) A[i++] = larger[j];
-			
+			for (int j = 0; j < n_l; j++) A[i++] = larger[j];	
 		}
-		
 		return A;
 	}
 
