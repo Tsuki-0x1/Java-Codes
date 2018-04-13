@@ -1,7 +1,7 @@
 import java.util.Iterator;
 import Helpers.EmptyCollectionException;	// Runtime Exception Class
-import Helpers.LinkedQueue;				        // Linked Queue Data Structure
-import Helpers.ArrayUnorderedList;		    // Unordered ArrayList Data Structure
+import Helpers.LinkedQueue;			// Linked Queue Data Structure
+import Helpers.ArrayUnorderedList;		// Unordered ArrayList Data Structure
 /**
  * Standard linked binary tree structure using links.
  * 
@@ -11,8 +11,16 @@ import Helpers.ArrayUnorderedList;		    // Unordered ArrayList Data Structure
  */
 public class BinaryTree<T>
 {
+	/**
+	 * Root node of this tree.
+	 */
 	private BinaryTreeNode<T> root;
+	/**
+	 * Number of nodes in this tree that are not null.
+	 */
 	private int numberOfNodes;
+	
+	
 	
 	/**
 	 * Constructor(1) used to create an empty binary tree.
@@ -23,6 +31,8 @@ public class BinaryTree<T>
 		this.numberOfNodes = 0;
 	}
 	
+	
+	
 	/**
 	 * Constructor(2) used to create a new binary tree with the specified element as its root.
 	 * @param element
@@ -32,6 +42,8 @@ public class BinaryTree<T>
 		this.root = new BinaryTreeNode<T>(element);
 		this.numberOfNodes = 1;
 	}
+	
+	
 	
 	/**
 	 * Constructor(3) used to create a new binary tree with the specified element as its root
@@ -52,6 +64,8 @@ public class BinaryTree<T>
 			this.root.setRight(new BinaryTreeNode<T>(rightSubtree.getRoot()));
 	}
 	
+	
+	
 	/**
 	 * Returns a reference to the element at the root.
 	 * @return
@@ -65,6 +79,8 @@ public class BinaryTree<T>
 		return this.root.getElement();
 	}
 	
+	
+	
 	/**
 	 * Returns the total number of nodes in this tree.
 	 * @return
@@ -74,6 +90,8 @@ public class BinaryTree<T>
 		return this.numberOfNodes;
 	}
 	
+	
+	
 	/**
 	 * Returns whether this tree is empty or not.
 	 * @return
@@ -82,6 +100,8 @@ public class BinaryTree<T>
 	{
 		return this.numberOfNodes == 0;
 	}
+	
+	
 	
 	/**
 	 * Returns whether this tree contains a node which contains an element that matches with
@@ -93,6 +113,8 @@ public class BinaryTree<T>
 	{
 		return findNode(targetElement, this.root);
 	}
+
+
 
 	/**
 	 * Helper method for contains().
@@ -117,6 +139,8 @@ public class BinaryTree<T>
 			return findNode(targetElement, node.getRight());
 	}
 
+
+
 	/**
 	 * Returns the height of the tree.
 	 * @return
@@ -125,6 +149,8 @@ public class BinaryTree<T>
 	{
 		return findHeight(this.root);
 	}
+	
+	
 	
 	/**
 	 * Helper method for height().
@@ -139,6 +165,8 @@ public class BinaryTree<T>
 		return Math.max(findHeight(node.getLeft()), findHeight(node.getRight())) + 1;
 	}
 	
+	
+	
 	/**
 	 * Returns a pre-order iterator over this tree.
 	 * @return
@@ -150,6 +178,8 @@ public class BinaryTree<T>
 		
 		return list.iterator();
 	}
+	
+	
 	
 	/**
 	 * Helper method for iteratorPreOrder().
@@ -167,6 +197,8 @@ public class BinaryTree<T>
 		preorder(node.getRight(), list);
 	}
 
+
+
 	/**
 	 * Returns an in-order iterator over this tree.
 	 * @return
@@ -178,6 +210,8 @@ public class BinaryTree<T>
 		
 		return list.iterator();
 	}
+
+
 
 	/**
 	 * Helper method for iteratorInOrder()
@@ -195,6 +229,8 @@ public class BinaryTree<T>
 		inorder(node.getRight(), list);
 	}
 
+
+
 	/**
 	 * Returns a post-order iterator over this tree.
 	 * @return
@@ -206,6 +242,8 @@ public class BinaryTree<T>
 		
 		return list.iterator();
 	}
+	
+	
 	
 	/**
 	 * Helper method for iteratorPostOrder().
@@ -222,6 +260,8 @@ public class BinaryTree<T>
 		postorder(node.getRight(), list);
 		list.addToRear(node.getElement());
 	}
+
+
 
 	/**
 	 * Returns a level-order iterator over this tree.
@@ -256,6 +296,8 @@ public class BinaryTree<T>
 		
 		return list.iterator();
 	}
+	
+	
 	
 	/**
 	 * Retruns String representation of this tree.
