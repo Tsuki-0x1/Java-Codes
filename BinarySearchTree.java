@@ -132,7 +132,7 @@ public class BinarySearchTree<T> extends BinaryTree<T>
 				parent = current;
 				current = current.getLeft();
 			}
-			// target is in right side subree
+			// target is in right side subtree
 			else
 			{
 				parent = current;
